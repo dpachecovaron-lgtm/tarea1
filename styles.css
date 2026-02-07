@@ -1,0 +1,204 @@
+/*
+ * Archivo Paranormal - Estilo terror
+ * Hice el diseño inspirado en Silent Hill, todo oscuro y con niebla
+ */
+
+/* Traigo las fuentes de Google, Cinzel para los títulos y Crimson pa el texto normal */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* Variables, tipo colores guardados para usarlos en todo el archivo
+   así si quiero cambiar algo solo lo cambio acá */
+:root {
+    --color-sangre: #8b0000;           /* rojo oscuro, como sangre seca */
+    --color-oscuro: #0d0d0d;           /* negro casi total */
+    --color-fantasma: #c9c9c9;         /* gris claro pa el texto */
+    --color-texto-aterrorizado: #e8e0d5; /* beige suave, fácil de leer */
+    --sombra-espeluznante: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Todo el body, o sea la página entera */
+body {
+    font-family: 'Crimson Text', Georgia, serif;
+    margin: 0;                         /* quito los espacios que pone el navegador por defecto */
+    padding: 0;
+    min-height: 100vh;                 /* que ocupe toda la pantalla de alto */
+    position: relative;
+    color: var(--color-texto-aterrorizado);
+    background-color: var(--color-oscuro);
+    background-image: url('img/background.png');  /* mi imagen del bosque con niebla */
+    background-size: cover;            /* que cubra todo el fondo */
+    background-position: center;
+    background-attachment: fixed;      /* que el fondo no se mueva al hacer scroll */
+    background-repeat: no-repeat;
+}
+
+/* Esto crea una capa invisible encima del fondo
+   la puse difuminada para que se lea bien el texto y se vea más terrorífico */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 13, 13, 0.75);  /* negro semi transparente */
+    backdrop-filter: blur(4px);          /* el blur que difumina todo */
+    z-index: -1;                         /* que quede atrás del contenido */
+    pointer-events: none;                /* que no bloquee los clics */
+}
+
+/* Las cajas principales: header, section, aside y footer
+   les puse lo mismo a todas para que se vean coherentes */
+header, section, aside, footer {
+    width: 85%;
+    max-width: 900px;                  /* que no se estiren mucho en pantallas grandes */
+    margin: 25px auto;                 /* centradas y con espacio arriba/abajo */
+    padding: 28px 35px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(15, 15, 15, 0.95) 100%);
+    border: 1px solid rgba(139, 0, 0, 0.3);
+    box-shadow: var(--sombra-espeluznante), inset 0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Encabezado: el título principal y la descripción */
+header {
+    text-align: center;
+    border-left: 5px solid var(--color-sangre);  /* raya roja a la izquierda */
+    background: linear-gradient(135deg, rgba(20, 10, 10, 0.95) 0%, rgba(13, 13, 13, 0.98) 100%);
+}
+
+header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-sangre);
+    text-shadow: 0 0 20px rgba(139, 0, 0, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 3px;               /* separo un poco las letras */
+    margin-bottom: 15px;
+}
+
+header p {
+    font-size: 1.05rem;
+    color: var(--color-fantasma);
+    line-height: 1.7;                  /* espacio entre líneas pa que no se amontone */
+    font-style: italic;
+}
+
+/* El menú de navegación */
+nav {
+    width: 85%;
+    max-width: 900px;
+    margin: 0 auto 25px;
+    border-radius: 4px;
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid rgba(139, 0, 0, 0.4);
+}
+
+nav ul {
+    list-style: none;                  /* quito los puntitos de la lista */
+    display: flex;                     /* los pongo en fila */
+    justify-content: center;
+    flex-wrap: wrap;                   /* si no caben, salta a la siguiente línea */
+    padding: 12px;
+    margin: 0;
+    gap: 10px;                         /* espacio entre cada enlace */
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    color: var(--color-fantasma);
+    text-decoration: none;             /* sin subrayado */
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    padding: 8px 18px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: all 0.3s ease;         /* animación suave cuando paso el mouse */
+}
+
+/* Cuando paso el mouse por encima del enlace */
+nav a:hover {
+    color: var(--color-sangre);
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.6);
+    border-color: rgba(139, 0, 0, 0.5);
+    background: rgba(139, 0, 0, 0.1);
+}
+
+/* La sección principal con los artículos */
+section {
+    background: linear-gradient(180deg, rgba(22, 22, 22, 0.92) 0%, rgba(18, 18, 18, 0.95) 100%);
+}
+
+article {
+    margin-bottom: 28px;
+}
+
+/* Al último artículo no le pongo margen abajo pa que no quede espacio de más */
+article:last-child {
+    margin-bottom: 0;
+}
+
+article h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--color-sangre);
+    font-size: 1.4rem;
+    border-bottom: 2px solid rgba(139, 0, 0, 0.5);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
+}
+
+article p {
+    color: var(--color-fantasma);
+    line-height: 1.8;
+}
+
+/* La barra lateral, la de temas relacionados */
+aside {
+    background: linear-gradient(180deg, rgba(30, 15, 15, 0.9) 0%, rgba(20, 10, 10, 0.95) 100%);
+    border-left: 5px solid var(--color-sangre);
+}
+
+aside h3 {
+    color: var(--color-sangre);
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* Las listas en general */
+ul {
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+    color: var(--color-fantasma);
+}
+
+/* Pie de página con mis datos */
+footer {
+    background: linear-gradient(180deg, rgba(15, 10, 10, 0.95) 0%, rgba(10, 5, 5, 0.98) 100%);
+    text-align: center;
+    border: 1px solid rgba(139, 0, 0, 0.3);
+}
+
+footer img {
+    border-radius: 50%;               /* la foto circular */
+    margin: 10px 0;
+    border: 3px solid var(--color-sangre);
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
+}
+
+footer p {
+    margin: 6px 0;
+    color: var(--color-fantasma);
+}
+
+footer strong {
+    color: var(--color-sangre);        /* Nombre, Correo, etc en rojo */
+}
