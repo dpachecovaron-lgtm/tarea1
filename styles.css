@@ -1,163 +1,162 @@
+/*
+ * Archivo Paranormal - Estilo terror
+ * Hice el diseño inspirado en Silent Hill, todo oscuro y con niebla
+ */
 
-
-
-
-
-
+/* Traigo las fuentes de Google, Cinzel para los títulos y Crimson pa el texto normal */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
 
-          
-:root{
-    --color-sangre: #8b0000;
-    --color-oscuro: #0d0d0d;
-    --color-fantasma: #c9c9c9;
-    --color-texto-aterrorizado:#e8e0d5;
-    --color-sombra-espeluznante:0 4px 20px rgba(0,0,00.6);
+/* Variables, tipo colores guardados para usarlos en todo el archivo
+   así si quiero cambiar algo solo lo cambio acá */
+:root {
+    --color-sangre: #8b0000;           /* rojo oscuro, como sangre seca */
+    --color-oscuro: #0d0d0d;           /* negro casi total */
+    --color-fantasma: #c9c9c9;         /* gris claro pa el texto */
+    --color-texto-aterrorizado: #e8e0d5; /* beige suave, fácil de leer */
+    --sombra-espeluznante: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
+/* Todo el body, o sea la página entera */
 body {
-    font-family: 'Crimson', Georgia, serif;
-    margin: 0;
+    font-family: 'Crimson Text', Georgia, serif;
+    margin: 0;                         /* quito los espacios que pone el navegador por defecto */
     padding: 0;
-    min-height: 100vh;
+    min-height: 100vh;                 /* que ocupe toda la pantalla de alto */
     position: relative;
     color: var(--color-texto-aterrorizado);
     background-color: var(--color-oscuro);
-    background-image: url('img/background.jpeg');
-    background-size: cover;
+    background-image: url('img/background.png');  /* mi imagen del bosque con niebla */
+    background-size: cover;            /* que cubra todo el fondo */
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: fixed;      /* que el fondo no se mueva al hacer subir o bajar la página */
     background-repeat: no-repeat;
-
 }
 
-body::before{
-    content:'';
+/* Esto crea una capa invisible encima del fondo
+   la puse difuminada para que se lea bien el texto y se vea más terrorífico */
+body::before {
+    content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(13,13,13,0.75);
-    backdrop-filter: blur(4px);
-    z-index: -1;
-    pointer-events: none;
+    background: rgba(13, 13, 13, 0.75);  /* negro semi transparente */
+    backdrop-filter: blur(4px);          /* el blur hace que se difumine todo */
+    z-index: -1;                         /* que quede atrás del contenido */
+    pointer-events: none;                /* que no bloquee los clics */
 }
 
-section{
-    background: linear-gradient(180deg,rgba(22,22,22,0.92)0%,rgba(18,18,18,0.95)100%);
-    color:var(--color-fantasma)
+/* Cajas principales: section mantiene gradiente */
+section {
+    background: linear-gradient(180deg, rgba(22, 22, 22, 0.92) 0%, rgba(18, 18, 18, 0.95) 100%);
+    color: var(--color-fantasma);
 }
 
-header,section,aside,footer{
+/* Contenedores con ancho y márgenes comunes */
+header, section, aside, footer {
     width: 85%;
-    max-width: 900px;
-    margin: 25px auto;
+    max-width: 900px;                  /* que no se estiren mucho en pantallas grandes */
+    margin: 25px auto;                 /* centradas y con espacio arriba/abajo */
     padding: 28px 35px;
     border-radius: 4px;
     background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(15, 15, 15, 0.95) 100%);
     border: 1px solid rgba(139, 0, 0, 0.3);
-    box-shadow: var(--color-sombra-espeluznante), inset 0,0,60px rgba(0,0,0,0.3);
+    box-shadow: var(--sombra-espeluznante), inset 0 0 60px rgba(0, 0, 0, 0.3);
 }
 
-header{
+/* 1. SELECTORES: color de fondo y color de texto con etiquetas (header, nav, aside, footer) */
+header {
     text-align: center;
-    border-left: 5px solid var(--color-sangreS);
-    background-color: rgba(20,10,10,0.95);
-    color: var(--color-texto-aterrorizado);
+    border-left: 5px solid var(--color-sangre);
+    background-color: rgba(20, 10, 10, 0.95);     /* color de fondo con selector header */
+    color: var(--color-texto-aterrorizado);       /* color de texto del encabezado */
 }
 
-nav{
-    color: var(--color-fantasma);
-    
+nav {
+    color: var(--color-fantasma);                 /* color de texto del menú */
 }
 
-aside{
-    background-color: rgba(30,15,15,0.92);
-    color: var(--color-fantasma);
-    
+aside {
+    background-color: rgba(30, 15, 15, 0.92);      /* color de fondo con selector aside */
+    color: var(--color-fantasma);                 /* color de texto de la barra lateral */
 }
 
-footer{
-    background-color: rgba(15,10,10,0.95);
-    color: var(--color-fantasma);
+footer {
+    background-color: rgba(15, 10, 10, 0.95);     /* color de fondo con selector footer */
+    color: var(--color-fantasma);                 /* color de texto del pie de página */
 }
 
-header h1{  
-    font-family: 'Cinzel','serif';
+header h1 {
+    font-family: 'Cinzel', serif;
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--color-sangre);
     text-shadow: 0 0 20px rgba(139, 0, 0, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.8);
-    letter-spacing: 3px;
+    letter-spacing: 3px;               /* separo un poco las letras */
     margin-bottom: 15px;
 }
-  
-header p{
-    font-size: 2.5rem;
+
+header p {
+    font-size: 1.05rem;
     color: var(--color-fantasma);
-    line-height: 1.7;
+    line-height: 1.7;                  /* espacio entre líneas pa que no se amontone */
     font-style: italic;
 }
 
+/* El menú de navegación */
 nav {
     width: 85%;
     max-width: 900px;
     margin: 0 auto 25px;
     border-radius: 4px;
-    background: rgba(15,15,15,0.9);
-    border: 1px solid rgba(139,0,0,0.4);
-    
-
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid rgba(139, 0, 0, 0.4);
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
+    list-style: none;                  /* quito los puntitos de la lista */
+    display: flex;                     /* los pongo en fila */
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap;                   /* si no caben, salta a la siguiente línea */
     padding: 12px;
     margin: 0;
-    gap: 10px;
-    
-
+    gap: 10px;                         /* espacio entre cada enlace */
 }
 
-nav li{
+nav li {
     margin: 0;
-    
 }
 
-nav a{
+nav a {
     color: var(--color-fantasma);
-    text-decoration: none;
+    text-decoration: none;             /* quitamos el subrayado de los enlaces */
     font-family: 'Cinzel', serif;
     font-weight: 600;
     padding: 8px 18px;
     border: 1px solid transparent;
     border-radius: 2px;
-    transition: all 0.3s ease;
-   
+    transition: all 0.3s ease;         /* animación suave cuando paso el mouse */
 }
 
-
-nav a:hover{
+/* Cuando paso el mouse por encima del enlace aplicar el siguiente estilo */
+nav a:hover {
     color: var(--color-sangre);
-    text-shadow: 0 0 10px rgba(139,0,0,0.6);
-    border-color: rgba(0,0,0,0.5);
-    background:rgba(0,0,0,0.1) ;
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.6);
+    border-color: rgba(139, 0, 0, 0.5);
+    background: rgba(139, 0, 0, 0.1);
 }
 
+/* La sección principal con los artículos */
 section {
     background: linear-gradient(180deg, rgba(22, 22, 22, 0.92) 0%, rgba(18, 18, 18, 0.95) 100%);
-
 }
 
 article {
     margin-bottom: 28px;
-    
 }
 
+/* Al último artículo no le pongo margen abajo pa que no quede espacio de más */
 article:last-child {
     margin-bottom: 0;
 }
@@ -166,10 +165,10 @@ article h2 {
     font-family: 'Cinzel', serif;
     color: var(--color-sangre);
     font-size: 1.4rem;
-    border-bottom: 2px rgba(139,0,0,0.5);
+    border-bottom: 2px solid rgba(139, 0, 0, 0.5);
     padding-bottom: 8px;
     margin-bottom: 12px;
-    text-shadow: 0 0 15px rgba(139,0,0,0.3);
+    text-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
 }
 
 article p {
@@ -177,6 +176,7 @@ article p {
     line-height: 1.8;
 }
 
+/* Tabla Poe Hollywood: estructura con table, thead, tbody, tr, th, td */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -187,23 +187,24 @@ table {
 
 table th,
 table td {
-    border: 1px solid rgba(139,0,0,0.4);
+    border: 1px solid rgba(139, 0, 0, 0.4);
     padding: 12px 10px;
     text-align: left;
 }
 
 table thead th {
-    background-color: rgba(139,0,0,0.5);
+    background-color: rgba(139, 0, 0, 0.5);
+    color: var(--color-texto-aterrorizado);
     font-family: 'Cinzel', serif;
     font-weight: 600;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: rgba(30,20,20,0.4);
+    background-color: rgba(30, 20, 20, 0.4);
 }
 
 table tbody tr:hover {
-    background-color: rgba(139,0,0,0.08);
+    background-color: rgba(139, 0, 0, 0.08);
 }
 
 table a {
@@ -215,13 +216,13 @@ table a:hover {
     text-decoration: underline;
 }
 
+/* Celdas de galería: imágenes de pósters */
 td.galeria-placeholder {
     min-width: 120px;
     min-height: 160px;
-    background-color: rgba(20,15,15,0.6);
+    background-color: rgba(20, 15, 15, 0.6);
     vertical-align: middle;
     text-align: center;
-    
 }
 
 td.galeria-placeholder img {
@@ -234,22 +235,24 @@ td.galeria-placeholder img {
     margin: 0 auto;
 }
 
+/* 2. CLASES (class): modificar tamaño de texto en distintas partes de la página */
 .texto-grande {
-    font-size: 1.2rem;
+    font-size: 1.2rem;                /* texto más grande */
 }
 
 .texto-mediano {
-    font-size: 1.05rem;
+    font-size: 1.05rem;               /* tamaño medio */
 }
 
 .texto-pequeno {
-    font-size: 0.92rem;
+    font-size: 0.92rem;               /* texto más pequeño */
 }
 
-.titulo-seccion { 
-    font-size: 1.45;
+.titulo-seccion {
+    font-size: 1.45rem;               /* títulos de sección un poco más grandes */
 }
 
+/* 3. IDs: modificar tipo de letra (font-family) en cada sección */
 #introduccion {
     font-family: 'Crimson Text', Georgia, serif;
 }
@@ -273,4 +276,50 @@ td.galeria-placeholder img {
 #autor {
     font-family: 'Crimson Text', Georgia, serif;
 }
-   
+
+/* La barra lateral, la de temas relacionados */
+aside {
+    background: linear-gradient(180deg, rgba(30, 15, 15, 0.9) 0%, rgba(20, 10, 10, 0.95) 100%);
+    border-left: 5px solid var(--color-sangre);
+}
+
+aside h3 {
+    color: var(--color-sangre);
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* Las listas en general */
+ul {
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+    color: var(--color-fantasma);
+}
+
+/* Pie de página con mis datos */
+footer {
+    background: linear-gradient(180deg, rgba(15, 10, 10, 0.95) 0%, rgba(10, 5, 5, 0.98) 100%);
+    text-align: center;
+    border: 1px solid rgba(139, 0, 0, 0.3);
+}
+
+footer img {
+    border-radius: 50%;               /* la foto circular */
+    margin: 10px 0;
+    border: 3px solid var(--color-sangre);
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
+}
+
+footer p {
+    margin: 6px 0;
+    color: var(--color-fantasma);
+}
+
+footer strong {
+    color: var(--color-sangre);        /* Nombre, Correo, etc en rojo */
+}
